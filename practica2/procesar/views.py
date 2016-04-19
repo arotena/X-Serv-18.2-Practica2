@@ -38,7 +38,9 @@ def inicio(request):
             pag = Page(url_original=url)
             pag.save()
             encontrada = Page.objects.get(url_original=url)
-        return HttpResponse("http://localhost:1234/" + str(encontrada.id))
+        respuesta = '<a href ="'+ str(encontrada.id) + '">'
+        respuesta += "http://localhost:1234/" + str(encontrada.id) + '</a>'
+        return HttpResponse(respuesta)
     listado = Page.objects.all()
     respuesta = "<ol>"
     for elemento in listado:
